@@ -1,0 +1,7 @@
+Go to end of file: G
+Recover previous action: u
+go to first line: gg
+go to last line: G
+delete one line:  dd
+delete from current line to last line: dG
+delete all lines: gg+dG (go first line first then delete all)

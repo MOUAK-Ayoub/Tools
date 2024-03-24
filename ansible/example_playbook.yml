@@ -1,0 +1,40 @@
+---
+- name: variable precedence test
+  hosts: all
+  # To specify variblaes in the playbook
+  vars:
+    doc_root: /var/www/example
+  # to reference a file that contains variables
+  # env here is passed in the command with -e "env=dev"
+  vars_files:
+    - "vars/{{ env }}.yml"
+
+  tasks:
+    - name: install java 8
+      yum:
+        name: "java-{{kafka.java.version}}-openjdk-devel"
+        state: latest
+      tags: java
+    # for loop use this
+    - name: Add several users
+      module:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - testuser1
+        - testuser2
+    # or this if you pass the list as a varible
+    #  loop: "{{ child_ous }}"
+
+    # For registering a variable dynamically (during the playbook execution)
+    - name: register domain
+      win_shell: (Get-ADDomain).DistinguishedName
+      register: domain_command
+    - set_fact:
+        domain_detailed={{ domain_command.stdout }}
+
+    # To add debug message
+    - name: debug json read
+      debug:
+        msg: "{{ users }}"
+

@@ -1,0 +1,7 @@
+---
+
+# var file
+kafka:
+  version: 2.5.0
+  java:
+   version: 1.8.0

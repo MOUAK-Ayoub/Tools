@@ -1,0 +1,8 @@
+---
+- name: Actions for all servers
+  hosts: all
+  tasks:
+     - name: Touch a file (creates if not present, updates modification time if present)
+       ansible.windows.win_file:
+         path: C:\foo.conf
+         state: touch

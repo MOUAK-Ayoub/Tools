@@ -1,0 +1,5 @@
+# Execute ansible playbook with this command:
+# -i for specifying the inventory  and then the hosts  and -e for specifying the variables
+# --tags execute just tasks that have these tags
+ansible-playbook -i ./vars/inventory group_hosts -e "env=dev"  kafka_playbook.yaml --tags=launch
+

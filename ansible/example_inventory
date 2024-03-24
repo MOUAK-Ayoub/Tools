@@ -1,0 +1,8 @@
+[localhost]
+localhost
+
+[dev]
+# hostname is just a tag no DNS resolution
+localhost hostname=local
+slave1 hostname=sv2
+slave2 hostname=sv2

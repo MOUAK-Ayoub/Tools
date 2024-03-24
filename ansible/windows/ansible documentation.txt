@@ -1,0 +1,33 @@
+#For windows the managed node supports just Linux systems not windows !!
+
+# Install ansible look at contoller.sh from kafka repository
+# install pywinrm 
+pip3 install "pywinrm>=0.3.0"
+
+# Open winrm http and https (if applied) in windows server
+add in inventory or global config of ansible
+#Example of inventory with winrm configuration
+
+-------------------------------------------------------------------------------------------
+NOT SURE IF NECESSARY
+
+#To apply in windows host
+
+winrm get winrm/config/Service
+winrm get winrm/config/Winrs
+Set-Item -Path WSMan:\localhost\Service\Auth\basic -Value $true
+Set-Item -Path WSMan:\localhost\Service\AllowUnencrypted -Value $true
+Set-Item -Path WSMan:\localhost\Service\Auth\CredSSP -Value $true
+
+Set-Item -Path WSMan:\localhost\Service\EnableCompatibilityHttpListener -Value $true
+Set-Item -Path WSMan:\localhost\Service\EnableCompatibilityHttpsListener -Value $true
+
+# also this script from the official ansible page
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+$url = "https://raw.githubusercontent.com/jborean93/ansible-windows/master/scripts/Install-WMF3Hotfix.ps1"
+$file = "$env:temp\Install-WMF3Hotfix.ps1"
+
+(New-Object -TypeName System.Net.WebClient).DownloadFile($url, $file)
+powershell.exe -ExecutionPolicy ByPass -File $file -Verbose
+
+-------------------------------------------------------------------------------------------
