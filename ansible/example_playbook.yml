@@ -23,7 +23,7 @@
       loop:
         - testuser1
         - testuser2
-    # or this if you pass the list as a varible
+    # or this if you pass the list as a variable
     #  loop: "{{ child_ous }}"
 
     # For registering a variable dynamically (during the playbook execution)

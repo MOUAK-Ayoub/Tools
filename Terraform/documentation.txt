@@ -1,0 +1,2 @@
+# For reloading module from  source use:
+terraform init -upgrade
