@@ -7,9 +7,9 @@ pip3 install "pywinrm>=0.3.0"
 # Open winrm http and https (if applied) in windows server
 add in inventory or global config of ansible
 #Example of inventory with winrm configuration
-
+look at windows/inventory_example
 -------------------------------------------------------------------------------------------
-NOT SURE IF NECESSARY
+NOT SURE IF ALL ARE NECESSARY
 
 #To apply in windows host
 
